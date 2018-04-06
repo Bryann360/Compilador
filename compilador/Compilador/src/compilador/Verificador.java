@@ -15,13 +15,13 @@ public class Verificador extends PalavrasReservadas implements Validavel{
         String linha;
         BufferedReader in;
 
-        in = new BufferedReader(new FileReader("..\\..\\cefet.tiny.txt"));
+        in = new BufferedReader(new FileReader("..\\cefet.txt"));
         linha = in.readLine();
 
         while(linha != null)
         {       
                
-               System.out.println(linha);
+               //System.out.println(linha);
                Pilha.AddPilha(linha);
                linha = in.readLine();
         }

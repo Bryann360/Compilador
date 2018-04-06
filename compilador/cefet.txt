@@ -1,0 +1,8 @@
+b := 5
+readInt (a)
+if (a < 5)
+    b := a
+endif
+println
+print(b)
+end
