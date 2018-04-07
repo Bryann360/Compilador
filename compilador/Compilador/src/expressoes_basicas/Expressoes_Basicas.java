@@ -8,7 +8,6 @@ public class Expressoes_Basicas {
     public static void main(String[] args) {
         
         System.out.println("Insira a expressão:");
-        
         Scanner scanner = new Scanner(System.in);
         
         String expBasica = scanner.next();
@@ -29,21 +28,22 @@ public class Expressoes_Basicas {
         }
         }catch(ExcessaoInsercao EI){
             System.out.println(EI.getMessage());
+            return;
         }
         
         String regEx = "[A-Za-z]*";
         boolean verificaCaracter;
-        verificaCaracter = Pattern.matches(regEx, expBasica);
+        verificaCaracter = expBasica.matches(regEx);
         
         try{
             
             if(verificaCaracter){
-                //lanÃ§ando excessÃ£o    
                 throw new ExcessaoInsercao("Valor inválido digitado");
             }
              
         } catch(ExcessaoInsercao EI){
             System.out.println(EI.getMessage());
+            return;
         }
         
         
@@ -51,12 +51,7 @@ public class Expressoes_Basicas {
            
         
         Expressao expressao = new Expressao(vetorExpressao);
-        expressao.ordenaExpressao();
-        expressao.separaPilhas();
-        expressao.resolveExpressao();
-   
-        
+        System.out.printf("Resultado: %.2f\n", expressao.resolveExpressao());
     
     }
 }
-

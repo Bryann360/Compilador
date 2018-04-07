@@ -11,6 +11,8 @@ public class Expressao {
 
     public Expressao(char[] expressao) {
         this.expressao = expressao;
+        ordenaExpressao();
+        separaPilhas();
     }
     
     public void contaTokens(){
@@ -25,9 +27,15 @@ public class Expressao {
                     aux=String.valueOf(expressao[i-1]);
                     aux+=String.valueOf(expressao[i]);
                 }
-                while((i<expressao.length-1)&&(expressao[i+1]>='0'&&expressao[i+1]<='9')){
-                    aux+=String.valueOf(expressao[i+1]);
-                    i++;
+                while((i<expressao.length-1)&&((expressao[i+1]>='0'&&expressao[i+1]<='9')||(expressao[i+1]==','))){
+                    if(expressao[i+1]==','){
+                        aux+=".";
+                        i++;
+                    }
+                    else{
+                        aux+=String.valueOf(expressao[i+1]);
+                        i++;
+                    }
                 }
 
                 contaTokens++;
@@ -65,9 +73,15 @@ public class Expressao {
                     aux=String.valueOf(expressao[i-1]);
                     aux+=String.valueOf(expressao[i]);
                 }
-                while((i<expressao.length-1)&&(expressao[i+1]>='0'&&expressao[i+1]<='9')){
-                    aux+=String.valueOf(expressao[i+1]);
-                    i++;
+                while((i<expressao.length-1)&&((expressao[i+1]>='0'&&expressao[i+1]<='9')||(expressao[i+1]==','))){
+                    if(expressao[i+1]==','){
+                        aux+=".";
+                        i++;
+                    }
+                    else{
+                        aux+=String.valueOf(expressao[i+1]);
+                        i++;
+                    }
                 }
                 
                 pilhaToken[indiceOrdenada]=aux;
@@ -137,12 +151,14 @@ public class Expressao {
                         
                     case "*":
                         if((indicePilhaOperadores>0)&&((pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("*"))||(pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("/"))||(pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("^")))){
-                            for(int j=1; (indicePilhaOperadores-j)>=0&&indicePilhaOperadores-j>=0&&!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("("); j++){
-                                pilhaSaida[indicePilhaSaida]=pilhaOperadores[indicePilhaOperadores-j];
-                                pilhaOperadores[indicePilhaOperadores-j]=pilhaToken[i];
-                                indicePilhaOperadores--;
-                                indicePilhaSaida++;
+                            for(int j=1; (indicePilhaOperadores-j)>=0&&(!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("(")); indicePilhaOperadores--){
+                                if(!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("+")&&!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("-")){
+                                    pilhaSaida[indicePilhaSaida]=pilhaOperadores[indicePilhaOperadores-j];
+                                    pilhaOperadores[indicePilhaOperadores-j]=pilhaToken[i];
+                                    indicePilhaSaida++;
+                                }
                             }
+                                indicePilhaOperadores+=2;
                         }
                         
                         else{
@@ -153,12 +169,14 @@ public class Expressao {
                         
                     case "/":
                         if((indicePilhaOperadores>0)&&(pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("*")||pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("/")||pilhaOperadores[indicePilhaOperadores-1].equalsIgnoreCase("^"))){
-                            for(int j=1; (indicePilhaOperadores-j)>=0&&indicePilhaOperadores-j>=0&&!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("("); j++){
-                                pilhaSaida[indicePilhaSaida]=pilhaOperadores[indicePilhaOperadores-j];
-                                pilhaOperadores[indicePilhaOperadores-j]=pilhaToken[i];
-                                indicePilhaOperadores--;
-                                indicePilhaSaida++;
+                            for(int j=1; (indicePilhaOperadores-j)>=0&&(!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("(")); indicePilhaOperadores--){
+                                if(!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("+")&&!pilhaOperadores[indicePilhaOperadores-j].equalsIgnoreCase("-")){
+                                    pilhaSaida[indicePilhaSaida]=pilhaOperadores[indicePilhaOperadores-j];
+                                    pilhaOperadores[indicePilhaOperadores-j]=pilhaToken[i];
+                                    indicePilhaSaida++;
+                                }
                             }
+                                indicePilhaOperadores+=2;
                         }
                         else{
                             pilhaOperadores[indicePilhaOperadores]=pilhaToken[i];
@@ -207,7 +225,7 @@ public class Expressao {
         }
     }
     
-    public void resolveExpressao(){
+    public Float resolveExpressao(){
         int numOperacoes = pilhaOperadores.length;
         int i=0;
         int topo=tamanhoExpressao-1;
@@ -278,6 +296,6 @@ public class Expressao {
             }
             i++;
         }
-        System.out.println(pilhaSaida[0]);
+        return(Float.parseFloat(pilhaSaida[0]));
     }
 }

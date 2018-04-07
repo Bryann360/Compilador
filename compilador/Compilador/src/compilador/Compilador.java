@@ -31,10 +31,9 @@ public class Compilador {
 
         Verifica.VerificaSintaxe();
 
-        Iterator it = PilhaVer.getLinhas().iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        Verifica.valida();
+        
+        
     }
     
 }
