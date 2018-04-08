@@ -16,11 +16,8 @@ public class PalavrasReservadas implements Reservado{
         comandosCefetiny.add("readInt");
         comandosCefetiny.add("print");
         comandosCefetiny.add("println");
-        comandosCefetiny.add("endif");
         comandosCefetiny.add("else");
-        comandosCefetiny.add("endif");
         comandosCefetiny.add("do");
-        comandosCefetiny.add("endif");
     }
     
     

@@ -92,10 +92,38 @@ public class Verificador extends PalavrasReservadas implements Validavel{
                             System.err.println("Erro de compilação: Variável sem atribuição - "+ palavraLinhaDeVerificacao[0]);
                             /*Erro porque apos a variavel, não tem atribuição*/
                         }
+                    }else{
+                        switch (palavraLinhaDeVerificacao[0]){
+                            case "if":
+                                
+                                break;
+                            case "for":
+                                break;
+                            case "while":
+                                break;
+                            case "endif":
+                                break;
+                            case "end":
+                                break;
+                            case "readInt":
+                                break;
+                            case "print":
+                                break;
+                            case "println":
+                                break; 
+                            case "else":
+                                break;
+                            case "do":
+                                break;   
+                            default:
+                                
+                        }
                     }
                 }else {
                     System.out.println("Erro de compilação: "+palavraLinhaDeVerificacao[0]+" começa com um digito");
                 }
+                
+                
                 
                 
         }
