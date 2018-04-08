@@ -8,7 +8,19 @@ public class PalavrasReservadas implements Reservado{
 
     @Override
     public void Reservando(){
-        //Cria ArrayList com todos os comandos da linguagem cefetiny...
+        comandosCefetiny.add("if");
+        comandosCefetiny.add("while");
+        comandosCefetiny.add("for");
+        comandosCefetiny.add("endif");
+        comandosCefetiny.add("end");
+        comandosCefetiny.add("readInt");
+        comandosCefetiny.add("print");
+        comandosCefetiny.add("println");
+        comandosCefetiny.add("endif");
+        comandosCefetiny.add("else");
+        comandosCefetiny.add("endif");
+        comandosCefetiny.add("do");
+        comandosCefetiny.add("endif");
     }
     
     

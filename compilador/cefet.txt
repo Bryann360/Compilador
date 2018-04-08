@@ -1,8 +1,8 @@
-b := 5+4*8
-readInt (a)
+b    := 5+4*8
+readInt   (a)
 if (a < 5)
 	b := a
 endif
 println
-print(b)
+print (b)
 end

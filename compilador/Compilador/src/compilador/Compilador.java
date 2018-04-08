@@ -10,7 +10,7 @@ public class Compilador {
         PilhaDeVerificacao PilhaVer = new PilhaDeVerificacao();
         PalavrasReservadas ComandosSalvos = new PalavrasReservadas();
         Verificador Verifica = new Verificador(PilhaVer, ComandosSalvos);
-        Executor Executa = new Executor();
+
         
         /*exp binarias implementação
         
@@ -28,7 +28,8 @@ public class Compilador {
         exp.resolveExpressao();
         
         */
-
+        ComandosSalvos.Reservando();
+        
         Verifica.VerificaSintaxe();
 
         Verifica.valida();
