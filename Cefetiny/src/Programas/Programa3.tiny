@@ -1,0 +1,23 @@
+start
+print('Digite o valor de x: ')
+readint(x)
+println
+print('Digite o valor de y: ')
+readint(y)
+println
+print('Digite o valor de z: ')
+readint(z)
+println
+print('Digite outro valor de x: ')
+readint(x)
+println
+print('Valor de x: ')
+print(x)
+println
+print('Valor de y: ')
+print(y)
+println
+print('Valor de z: ')
+print(z)
+println
+end

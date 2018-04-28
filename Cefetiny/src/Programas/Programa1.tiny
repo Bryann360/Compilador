@@ -1,0 +1,13 @@
+start
+print('Entre com o numero de linhas: ')
+readint(n)
+for (a:= 1; a<=n; a:=a+1)
+  for (i:= 1; i<=(n-a); i:=i+1)
+    print('.')
+  endfor
+  for (i:=1; i<=(2*a-1); i:=i+1)
+    print('-')
+  endfor
+  println
+endfor
+end

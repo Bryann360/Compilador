@@ -1,0 +1,4 @@
+start
+b := (sqrt((16-8)-4)^2)
+print(b)
+end

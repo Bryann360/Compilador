@@ -1,0 +1,13 @@
+start
+print('Informe os coeficientes da equacao do 2o grau')
+println
+print('Coeficiente a: ')
+readint(a)
+print('Coeficiente b: ')
+readint(b)
+print('Coeficiente c: ')
+readint(c)
+d := b * b - 4 * a * c
+print('d= ')
+print(d)
+end
